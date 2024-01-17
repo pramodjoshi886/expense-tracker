@@ -7,11 +7,13 @@ import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AddExpenseForm from './components/AddExpenseForm';
 import RemainingBudget from './components/Remaining';
+import Title from './components/Title';
 
 const App = () => {
 	return (
 		<AppProvider>
 			<div className='container'>
+				<Title/>
 				<h1 className='mt-3'>Track My Expense</h1>
 				<div className='row mt-3'>
 					<div className='col-sm'>
