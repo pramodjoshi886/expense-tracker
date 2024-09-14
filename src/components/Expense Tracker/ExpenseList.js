@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ExpenseItem from './ExpenseItem';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 
 const ExpenseList = () => {
 	const { expenses } = useContext(AppContext);
@@ -31,8 +31,8 @@ const ExpenseList = () => {
 					<ExpenseItem
 						id={expense.id}
 						name={expense.name}
-						cost={expense.cost}
 						date={expense.date}
+						cost={expense.cost}
 					/>
 				))}
 			</ul>

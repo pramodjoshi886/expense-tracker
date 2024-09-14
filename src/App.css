@@ -1,0 +1,19 @@
+/* App.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .main-content {
+    /* display: flex; */
+    /* flex-direction: column; */
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px; 
+  }
+  
+  .container {
+    /* Remove or adjust styles if necessary */
+  }
+  

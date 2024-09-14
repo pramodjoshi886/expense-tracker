@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
 import MyDatePicker from './MyDatePicker';
 
@@ -9,9 +9,16 @@ const AddExpenseForm = (props) => {
 	const [name, setName] = useState('');
 	const [cost, setCost] = useState('');
 	const [date, setDate] = useState(null);
+	const [error, setError] = useState('');
 
 	const onSubmit = (event) => {
 		event.preventDefault();
+
+		if (!name || !cost || !date) {
+			setError('All fields are required');
+			return;
+		  }
+
 		const expense = {
 			id: uuidv4(),
 			name,
@@ -27,6 +34,7 @@ const AddExpenseForm = (props) => {
 		setName('');
 		setCost('');
 		setDate(null);
+		setError('');
 	};
 
 	return (
@@ -54,16 +62,18 @@ const AddExpenseForm = (props) => {
 						onChange={(event) => setCost(event.target.value)}
 					/>
 				</div>
-				<div class='col-sm col-lg-4'>
-					<label for='date'>Date</label>
+				<div className='col-sm col-lg-4'>
+					<label htmlFor='date'>Date</label>
 					<MyDatePicker
-						required='required'
-						class='form-control'
+						required
+						className='form-control'
 						id='date'
 						selected={date}
-						onChange={(selectedDate) => setDate(selectedDate)}/>
-				</div>
+						onChange={(selectedDate) => setDate(selectedDate)}
+					/>
+       			</div>
 			</div>
+			{error && <div className='alert alert-danger mt-3'>{error}</div>}
 			<div class='row mt-3'>
 				<div class='col-sm'>
 					<button type='submit' class='btn btn-primary'>

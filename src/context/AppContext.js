@@ -19,7 +19,12 @@ export const AppReducer = (state, action) => {
                 ...state,
                 expenses: state.expenses.map((expense) =>
                 expense.id === action.payload.id
-                ? { ...expense, name: action.payload.name, cost: action.payload.cost }
+                ? { 
+					...expense,
+					name: action.payload.name, 
+					cost: action.payload.cost,
+					date: action.payload.date
+				 }
                 : expense
     ),
             };
