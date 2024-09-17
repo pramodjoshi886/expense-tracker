@@ -3,7 +3,7 @@ import { AppContext } from '../../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
 import MyDatePicker from './MyDatePicker';
 
-const AddExpenseForm = (props) => {
+const AddExpenseForm = () => {
 	const { dispatch } = useContext(AppContext);
 
 	const [name, setName] = useState('');
@@ -25,6 +25,8 @@ const AddExpenseForm = (props) => {
 			cost: parseInt(cost),
 			date: date ? date.toString():'',
 		};
+
+		// api call to add expense
 
 		dispatch({
 			type: 'ADD_EXPENSE',

@@ -1,0 +1,6 @@
+export const EXPENSE_SERVICE_ADD_URL="http://localhost:8082/api/expense/add"
+export const EXPENSE_SERVICE_GET_URL="http://localhost:8082/api/expense/get"
+export const EXPENSE_SERVICE_UPDATE_URL="http://localhost:8082/api/expense/update"
+export const EXPENSE_SERVICE_DELETE_URL="http://localhost:8082/api/expense/delete"
+export const AUTH_SERVICE_SIGNUP_URL="http://localhost:8082/api/user/signup"
+export const AUTH_SERVICE_LOGIN_URL="http://localhost:8082/api/user/login"

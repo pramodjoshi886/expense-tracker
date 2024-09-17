@@ -23,6 +23,8 @@ const ExpenseItem = (props) => {
 		handleClose();
 	};
 
+	// api calls to edit expense and delete expense
+
 	const formattedDate = props.date ? new Date(props.date).toLocaleDateString() : 'No Date';
 
 	return (

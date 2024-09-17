@@ -7,6 +7,8 @@ const ExpenseList = () => {
 
 	const [filteredExpenses, setfilteredExpenses] = useState(expenses || []);
 
+	//api call to get all existing expenses
+
 	useEffect(() => {
 		setfilteredExpenses(expenses);
 	}, [expenses]);
