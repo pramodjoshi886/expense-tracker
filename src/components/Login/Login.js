@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './Login.css';
 import { useNavigate } from 'react-router-dom';
+
+import './Login.css';
+import { login } from '../../service/auth.service';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -11,9 +13,17 @@ const Login = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    onLogin();
+    const response = login(email, password);
+    // console.log('Email:', email);
+    // console.log('Password:', password);
+    response.then((res) => {
+      if (res.data) {
+        onLogin();
+        sessionStorage.setItem('userId', res.data);
+      } else {
+        alert('Invalid email or password');
+      }
+    });
     navigate('/');
   };
 
@@ -26,7 +36,7 @@ const Login = ({ onLogin }) => {
       <h1 className="text-center mt-5">Welcome to your expense tracker</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Sign in to your account</h2>
-        
+
         <label htmlFor="email">Your email</label>
         <input
           type="email"

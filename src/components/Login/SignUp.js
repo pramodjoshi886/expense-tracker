@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './Login.css'; 
 import { useNavigate } from 'react-router-dom';
+
+import './Login.css';
+import { signUp } from '../../service/auth.service';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +13,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform sign-up API call logic here
+    signUp(email, password);
     console.log('Email:', email);
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
@@ -22,7 +25,7 @@ const SignUp = () => {
       <h1 className="text-center mt-5">Welcome to your expense tracker</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Sign up for a new account</h2>
-        
+
         <label htmlFor="email">Your email</label>
         <input
           type="email"

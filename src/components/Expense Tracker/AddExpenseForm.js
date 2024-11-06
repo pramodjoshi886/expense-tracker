@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { v4 as uuidv4 } from 'uuid';
 import MyDatePicker from './MyDatePicker';
+import { addExpense } from '../../service/expense.service';
 
 const AddExpenseForm = () => {
 	const { dispatch } = useContext(AppContext);
@@ -17,16 +18,17 @@ const AddExpenseForm = () => {
 		if (!name || !cost || !date) {
 			setError('All fields are required');
 			return;
-		  }
+		}
 
 		const expense = {
 			id: uuidv4(),
 			name,
 			cost: parseInt(cost),
-			date: date ? date.toString():'',
+			date: date ? date.toString() : '',
 		};
 
 		// api call to add expense
+		addExpense(expense);
 
 		dispatch({
 			type: 'ADD_EXPENSE',
@@ -73,7 +75,7 @@ const AddExpenseForm = () => {
 						selected={date}
 						onChange={(selectedDate) => setDate(selectedDate)}
 					/>
-       			</div>
+				</div>
 			</div>
 			{error && <div className='alert alert-danger mt-3'>{error}</div>}
 			<div class='row mt-3'>
